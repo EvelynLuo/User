@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UId}" for="UId" />
+                    <h:inputText id="UId" value="#{userController.selected.UId}" title="#{bundle.CreateUserTitle_UId}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_UId}"/>
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UUsername}" for="UUsername" />
+                    <h:inputText id="UUsername" value="#{userController.selected.UUsername}" title="#{bundle.CreateUserTitle_UUsername}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_UUsername}"/>
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UName}" for="UName" />
+                    <h:inputText id="UName" value="#{userController.selected.UName}" title="#{bundle.CreateUserTitle_UName}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UPassword}" for="UPassword" />
+                    <h:inputText id="UPassword" value="#{userController.selected.UPassword}" title="#{bundle.CreateUserTitle_UPassword}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_UPassword}"/>
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UGPA}" for="UGPA" />
+                    <h:inputText id="UGPA" value="#{userController.selected.UGPA}" title="#{bundle.CreateUserTitle_UGPA}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UTofel}" for="UTofel" />
+                    <h:inputText id="UTofel" value="#{userController.selected.UTofel}" title="#{bundle.CreateUserTitle_UTofel}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UGre}" for="UGre" />
+                    <h:inputText id="UGre" value="#{userController.selected.UGre}" title="#{bundle.CreateUserTitle_UGre}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UWechat}" for="UWechat" />
+                    <h:inputText id="UWechat" value="#{userController.selected.UWechat}" title="#{bundle.CreateUserTitle_UWechat}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UEmail}" for="UEmail" />
+                    <h:inputText id="UEmail" value="#{userController.selected.UEmail}" title="#{bundle.CreateUserTitle_UEmail}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UInfo}" for="UInfo" />
+                    <h:inputTextarea rows="4" cols="30" id="UInfo" value="#{userController.selected.UInfo}" title="#{bundle.CreateUserTitle_UInfo}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UMajor}" for="UMajor" />
+                    <h:inputText id="UMajor" value="#{userController.selected.UMajor}" title="#{bundle.CreateUserTitle_UMajor}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UState}" for="UState" />
+                    <h:inputText id="UState" value="#{userController.selected.UState}" title="#{bundle.CreateUserTitle_UState}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_UState}"/>
+                    <h:outputLabel value="#{bundle.CreateUserLabel_UAvatar}" for="UAvatar" />
+                    <h:inputText id="UAvatar" value="#{userController.selected.UAvatar}" title="#{bundle.CreateUserTitle_UAvatar}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_UAvatar}"/>
+                    <h:outputLabel value="#{bundle.CreateUserLabel_collegeCId}" for="collegeCId" />
+                    <h:selectOneMenu id="collegeCId" value="#{userController.selected.collegeCId}" title="#{bundle.CreateUserTitle_collegeCId}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_collegeCId}">
+                        <f:selectItems value="#{collegeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userController.create}" value="#{bundle.CreateUserSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{userController.prepareList}" value="#{bundle.CreateUserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

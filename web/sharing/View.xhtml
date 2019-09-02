@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSharingTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSharingLabel_SId}"/>
+                    <h:outputText value="#{sharingController.selected.SId}" title="#{bundle.ViewSharingTitle_SId}"/>
+                    <h:outputText value="#{bundle.ViewSharingLabel_STitle}"/>
+                    <h:outputText value="#{sharingController.selected.STitle}" title="#{bundle.ViewSharingTitle_STitle}"/>
+                    <h:outputText value="#{bundle.ViewSharingLabel_SDate}"/>
+                    <h:outputText value="#{sharingController.selected.SDate}" title="#{bundle.ViewSharingTitle_SDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSharingLabel_SContent}"/>
+                    <h:outputText value="#{sharingController.selected.SContent}" title="#{bundle.ViewSharingTitle_SContent}"/>
+                    <h:outputText value="#{bundle.ViewSharingLabel_SUp}"/>
+                    <h:outputText value="#{sharingController.selected.SUp}" title="#{bundle.ViewSharingTitle_SUp}"/>
+                    <h:outputText value="#{bundle.ViewSharingLabel_userUId}"/>
+                    <h:outputText value="#{sharingController.selected.userUId}" title="#{bundle.ViewSharingTitle_userUId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sharingController.destroyAndView}" value="#{bundle.ViewSharingDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSharingEditLink}"/>
+                <br />
+                <h:commandLink action="#{sharingController.prepareCreate}" value="#{bundle.ViewSharingCreateLink}" />
+                <br />
+                <h:commandLink action="#{sharingController.prepareList}" value="#{bundle.ViewSharingShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSharingIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

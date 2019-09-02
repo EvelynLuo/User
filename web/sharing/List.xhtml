@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSharingTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSharingEmpty}" rendered="#{sharingController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sharingController.items.rowCount > 0}">
+                    <h:outputText value="#{sharingController.pagination.pageFirstItem + 1}..#{sharingController.pagination.pageLastItem + 1}/#{sharingController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sharingController.previous}" value="#{bundle.Previous} #{sharingController.pagination.pageSize}" rendered="#{sharingController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sharingController.next}" value="#{bundle.Next} #{sharingController.pagination.pageSize}" rendered="#{sharingController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sharingController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSharingTitle_SId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.SId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSharingTitle_STitle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.STitle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSharingTitle_SDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.SDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSharingTitle_SContent}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.SContent}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSharingTitle_SUp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.SUp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSharingTitle_userUId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userUId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sharingController.prepareView}" value="#{bundle.ListSharingViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sharingController.prepareEdit}" value="#{bundle.ListSharingEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sharingController.destroy}" value="#{bundle.ListSharingDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sharingController.prepareCreate}" value="#{bundle.ListSharingCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSharingIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

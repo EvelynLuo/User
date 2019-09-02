@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSharingTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSharingLabel_SId}" for="SId" />
+                    <h:inputText id="SId" value="#{sharingController.selected.SId}" title="#{bundle.CreateSharingTitle_SId}" required="true" requiredMessage="#{bundle.CreateSharingRequiredMessage_SId}"/>
+                    <h:outputLabel value="#{bundle.CreateSharingLabel_STitle}" for="STitle" />
+                    <h:inputText id="STitle" value="#{sharingController.selected.STitle}" title="#{bundle.CreateSharingTitle_STitle}" required="true" requiredMessage="#{bundle.CreateSharingRequiredMessage_STitle}"/>
+                    <h:outputLabel value="#{bundle.CreateSharingLabel_SDate}" for="SDate" />
+                    <h:inputText id="SDate" value="#{sharingController.selected.SDate}" title="#{bundle.CreateSharingTitle_SDate}" required="true" requiredMessage="#{bundle.CreateSharingRequiredMessage_SDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSharingLabel_SContent}" for="SContent" />
+                    <h:inputTextarea rows="4" cols="30" id="SContent" value="#{sharingController.selected.SContent}" title="#{bundle.CreateSharingTitle_SContent}" required="true" requiredMessage="#{bundle.CreateSharingRequiredMessage_SContent}"/>
+                    <h:outputLabel value="#{bundle.CreateSharingLabel_SUp}" for="SUp" />
+                    <h:inputText id="SUp" value="#{sharingController.selected.SUp}" title="#{bundle.CreateSharingTitle_SUp}" />
+                    <h:outputLabel value="#{bundle.CreateSharingLabel_userUId}" for="userUId" />
+                    <h:selectOneMenu id="userUId" value="#{sharingController.selected.userUId}" title="#{bundle.CreateSharingTitle_userUId}" required="true" requiredMessage="#{bundle.CreateSharingRequiredMessage_userUId}">
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sharingController.create}" value="#{bundle.CreateSharingSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sharingController.prepareList}" value="#{bundle.CreateSharingShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSharingIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

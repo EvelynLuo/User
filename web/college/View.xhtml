@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCollegeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CId}"/>
+                    <h:outputText value="#{collegeController.selected.CId}" title="#{bundle.ViewCollegeTitle_CId}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CNameCh}"/>
+                    <h:outputText value="#{collegeController.selected.CNameCh}" title="#{bundle.ViewCollegeTitle_CNameCh}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CNameEn}"/>
+                    <h:outputText value="#{collegeController.selected.CNameEn}" title="#{bundle.ViewCollegeTitle_CNameEn}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CCountry}"/>
+                    <h:outputText value="#{collegeController.selected.CCountry}" title="#{bundle.ViewCollegeTitle_CCountry}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CSite}"/>
+                    <h:outputText value="#{collegeController.selected.CSite}" title="#{bundle.ViewCollegeTitle_CSite}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CInfo}"/>
+                    <h:outputText value="#{collegeController.selected.CInfo}" title="#{bundle.ViewCollegeTitle_CInfo}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CPic}"/>
+                    <h:outputText value="#{collegeController.selected.CPic}" title="#{bundle.ViewCollegeTitle_CPic}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CTofel}"/>
+                    <h:outputText value="#{collegeController.selected.CTofel}" title="#{bundle.ViewCollegeTitle_CTofel}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CGre}"/>
+                    <h:outputText value="#{collegeController.selected.CGre}" title="#{bundle.ViewCollegeTitle_CGre}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CGPA}"/>
+                    <h:outputText value="#{collegeController.selected.CGPA}" title="#{bundle.ViewCollegeTitle_CGPA}"/>
+                    <h:outputText value="#{bundle.ViewCollegeLabel_CFee}"/>
+                    <h:outputText value="#{collegeController.selected.CFee}" title="#{bundle.ViewCollegeTitle_CFee}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{collegeController.destroyAndView}" value="#{bundle.ViewCollegeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCollegeEditLink}"/>
+                <br />
+                <h:commandLink action="#{collegeController.prepareCreate}" value="#{bundle.ViewCollegeCreateLink}" />
+                <br />
+                <h:commandLink action="#{collegeController.prepareList}" value="#{bundle.ViewCollegeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCollegeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

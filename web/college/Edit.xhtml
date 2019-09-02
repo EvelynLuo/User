@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCollegeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CId}" for="CId" />
+                    <h:inputText id="CId" value="#{collegeController.selected.CId}" title="#{bundle.EditCollegeTitle_CId}" required="true" requiredMessage="#{bundle.EditCollegeRequiredMessage_CId}"/>
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CNameCh}" for="CNameCh" />
+                    <h:inputText id="CNameCh" value="#{collegeController.selected.CNameCh}" title="#{bundle.EditCollegeTitle_CNameCh}" required="true" requiredMessage="#{bundle.EditCollegeRequiredMessage_CNameCh}"/>
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CNameEn}" for="CNameEn" />
+                    <h:inputText id="CNameEn" value="#{collegeController.selected.CNameEn}" title="#{bundle.EditCollegeTitle_CNameEn}" required="true" requiredMessage="#{bundle.EditCollegeRequiredMessage_CNameEn}"/>
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CCountry}" for="CCountry" />
+                    <h:inputText id="CCountry" value="#{collegeController.selected.CCountry}" title="#{bundle.EditCollegeTitle_CCountry}" required="true" requiredMessage="#{bundle.EditCollegeRequiredMessage_CCountry}"/>
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CSite}" for="CSite" />
+                    <h:inputText id="CSite" value="#{collegeController.selected.CSite}" title="#{bundle.EditCollegeTitle_CSite}" required="true" requiredMessage="#{bundle.EditCollegeRequiredMessage_CSite}"/>
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CInfo}" for="CInfo" />
+                    <h:inputTextarea rows="4" cols="30" id="CInfo" value="#{collegeController.selected.CInfo}" title="#{bundle.EditCollegeTitle_CInfo}" required="true" requiredMessage="#{bundle.EditCollegeRequiredMessage_CInfo}"/>
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CPic}" for="CPic" />
+                    <h:inputText id="CPic" value="#{collegeController.selected.CPic}" title="#{bundle.EditCollegeTitle_CPic}" required="true" requiredMessage="#{bundle.EditCollegeRequiredMessage_CPic}"/>
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CTofel}" for="CTofel" />
+                    <h:inputText id="CTofel" value="#{collegeController.selected.CTofel}" title="#{bundle.EditCollegeTitle_CTofel}" />
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CGre}" for="CGre" />
+                    <h:inputText id="CGre" value="#{collegeController.selected.CGre}" title="#{bundle.EditCollegeTitle_CGre}" />
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CGPA}" for="CGPA" />
+                    <h:inputText id="CGPA" value="#{collegeController.selected.CGPA}" title="#{bundle.EditCollegeTitle_CGPA}" />
+                    <h:outputLabel value="#{bundle.EditCollegeLabel_CFee}" for="CFee" />
+                    <h:inputText id="CFee" value="#{collegeController.selected.CFee}" title="#{bundle.EditCollegeTitle_CFee}" />
+                </h:panelGrid>
+                <h:commandLink action="#{collegeController.update}" value="#{bundle.EditCollegeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCollegeViewLink}"/>
+                <br />
+                <h:commandLink action="#{collegeController.prepareList}" value="#{bundle.EditCollegeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCollegeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
